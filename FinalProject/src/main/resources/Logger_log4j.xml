@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration debug="false">
+	<appender name="fileAppernder" class="org.apache.log4j.FileAppender">
+		<param name="file" value="./FileTransfer/Transfer_logfile.log" />
+		<param name="append" value="true" />
+		<param name="threshold" value="debug" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" />
+		</layout>
+	</appender>
+	<appender name="RollingAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="./FileTransfer/Transfer_logfile.log" />
+		<param name="append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p] %d %c %M - %m%n" />
+		</layout>
+	</appender>
+
+
+	<root>
+		<!-- priority value="error" -->
+		<priority value="debug" />
+		<appender-ref ref="RollingAppender" />
+	</root>
+</log4j:configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="AccountInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VNDRACCNO" type="xs:string" />
+				<xs:element name="CNTRYCD"   type="xs:string"/>
+				<xs:element name="STMTYR" type="xs:string" />
+                <xs:element name="STMTMO" type="xs:string" />
+                <xs:element name="EFFDA" type="xs:string" />
+				<xs:element name="ACCTID" type="xs:string" />
+				<xs:element name="STMTDOCTRACKINGID" type="xs:string" />
+				<xs:element name="FILENAME" type="xs:string" />
+				<xs:element name="FILEPATH" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
