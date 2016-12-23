@@ -2,12 +2,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.xml.bind.JAXBException;
 
 import jaxb.BranchDocument;
 
 import org.apache.log4j.Logger;
+
+import com.ej.entities.AccountInfo;
 
 /**
  * 
@@ -17,13 +20,11 @@ public class XmlConvertion {
 
 	private static Logger log = Logger.getLogger(XmlConvertion.class);
 
-	public static void creatXml(BranchDocument brAccount, String desti, AccountInfo accInfo, String appid) {
+	public static void creatXml(BranchDocument brAccount, String desti, AccountInfo accInfo, String appid,String fileDate) {
 		try {
 			String xml;
 			try {
 				File file = new File(accInfo.getFILEPATH()+accInfo.getFILENAME());
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-				String fileDate = sdf.format(file.lastModified());
 				String xmlLocation = desti +  "/" + fileDate + "/" + appid + "/XML";
 				File dirFile = new File(xmlLocation);
 				if (!dirFile.exists()){
@@ -38,7 +39,6 @@ public class XmlConvertion {
 						+ accInfo.getSTMTDOCTRACKINGID() + ".xml");
 				pw.write(xml);
 				pw.close();
-				log.debug(xml);
 			} catch (IOException e) {
 				ProcessController.errorCount++;
 				log.error(e.getMessage());

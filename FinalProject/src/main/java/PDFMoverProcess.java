@@ -1,9 +1,14 @@
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 
+import com.ej.entities.AccountInfo;
+import com.ej.utils.Utilities;
+
 public class PDFMoverProcess {
+	static Utilities util = new Utilities();
 
 	private static Logger log = Logger.getLogger(PDFMoverProcess.class);
 
@@ -13,33 +18,23 @@ public class PDFMoverProcess {
 	 * @param write
 	 * @param desti
 	 */
-	public static void movePDF(String read, AccountInfo accInfo, String desti,String appid) {
-		String readPath = read;
+	public static void movePDF(File orginalFile, AccountInfo accInfo, String desti,String appid, String fileDate) {
 		String writePath = desti;
 		
 		File file = new File(accInfo.getFILEPATH()+accInfo.getFILENAME());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		String fileDate = sdf.format(file.lastModified());
 		String pdfLocation = desti +  "/" + fileDate + "/" + appid + "/PDF";
 		File dirFile = new File(pdfLocation);
 		if (!dirFile.exists()){
 			dirFile.mkdirs();
 		}
-		
-
-
 		writePath = pdfLocation + "/" +accInfo.getVNDRACCNO() + "." + accInfo.getSTMTDOCTRACKINGID() + ".pdf";
-
-		ReadWrite readWrite = null;
 		try {
-			readWrite = new ReadWrite();
-			readWrite.readAndWrite(readPath, writePath);
+			util.readAndWrite(orginalFile, writePath);
 
 		} catch (Exception e) {
 			ProcessController.errorCount++;
 			log.error(e.getMessage());
 		} finally {
-			readWrite = null;
 		}
 		
 		String folder4 = desti + "status";
