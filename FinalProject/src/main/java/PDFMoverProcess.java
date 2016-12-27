@@ -54,7 +54,7 @@ public class PDFMoverProcess {
 				}
 		
 		
-		createTouchFile(folder5 + "/" + accInfo.getVNDRACCNO() + "." + accInfo.getSTMTDOCTRACKINGID() + ".txt");
+		createTouchFile(folder5 + "/" + accInfo.getVNDRACCNO() + "." + accInfo.getSTMTDOCTRACKINGID() + "-"+fileDate);
 	}
 	
 	public static void createTouchFile(String filePath){

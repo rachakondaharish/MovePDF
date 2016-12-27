@@ -136,7 +136,7 @@ public class Utilities {
 			if (null != elements[4]){
 				Metadata meData = new Metadata();
 				meData.setValue(elements[4]);
-				meData.setName("EFF_TS");
+				meData.setName("STMT-DATE");
 				meData.setReqInd("Y");
 				mList.add(meData);
 				accInfo.setEFFDA(elements[4]);
