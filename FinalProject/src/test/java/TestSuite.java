@@ -9,6 +9,8 @@ import org.junit.runners.Suite;
 	PDFMoverProcessTest.class,
 	ReadWriteTest.class,
 	XmlConvertionTest.class,
+	TrailerCount.class,
+	cheakheader.class
 	//ProcessControllerTest.class,
 })
 public class TestSuite {

@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import jaxb.BranchDocument;
+import jaxb.BranchDocument.IndexingInfo;
+import jaxb.BranchDocument.IndexingInfo.ContentMetadata;
+import jaxb.BranchDocument.IndexingInfo.ContentMetadata.Metadata;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.ej.entities.AccountInfo;
-
-import jaxb.BranchDocument;
-import jaxb.BranchDocument.IndexingInfo;
-import jaxb.BranchDocument.IndexingInfo.ContentMetadata;
-import jaxb.BranchDocument.IndexingInfo.ContentMetadata.Metadata;
+import com.ej.utils.XmlConvertion;
 
 public class XmlConvertionTest {
 	private BranchDocument bdoc = null;

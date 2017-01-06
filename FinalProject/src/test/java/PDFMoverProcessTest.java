@@ -2,13 +2,14 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import jaxb.BranchDocument;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.ej.entities.AccountInfo;
-
-import jaxb.BranchDocument;
+import com.ej.utils.PDFMoverProcess;
 
 
 public class PDFMoverProcessTest {
@@ -35,11 +36,11 @@ public class PDFMoverProcessTest {
 	@Test
 	public void creatXmlTest() {
 		
-		String readPath = accInfo.getFILEPATH()+"/"+ accInfo.getFILENAME();
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Date today = new Date();
 		String fileDate = sdf.format(today);
-		PDFMoverProcess.movePDF(new File(readPath),accInfo, destination,appId, fileDate);
+		PDFMoverProcess.movePDF(accInfo, destination,appId, fileDate);
 		String pdfLocation = destination +  "/" + fileDate+"/" + appId+"/PDF";
 		String writePath = pdfLocation+ "/" + accInfo.getVNDRACCNO() + "." + accInfo.getSTMTDOCTRACKINGID() + ".pdf";
 		File xmlFile = new File(writePath);
